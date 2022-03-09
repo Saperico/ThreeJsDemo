@@ -1,6 +1,7 @@
 import * as THREE from "three"
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { SkeletonHelper } from "three";
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+
 const scene = new THREE.Scene();
 const aspect = window.innerWidth / window.innerHeight;
 const camera = new THREE.PerspectiveCamera( 60, aspect, 0.1, 1000 );
@@ -13,7 +14,7 @@ document.body.appendChild(renderer.domElement)
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.target.set(0, 0, 0);
 controls.update();
-
+scene.add(new THREE.AmbientLight(0xffffff));
 
 //add a 2D Grid
 const size = 100;
@@ -31,6 +32,21 @@ const cube = new THREE.Mesh( geometry, material );
 scene.add( cube );
 var x = 1
 
+//load model
+let turtleMesh;
+const loader = new GLTFLoader();
+loader.load( 'robot.glb', function ( gltf ) {
+    turtleMesh = gltf.scene;
+    gltf.scene.translateY(-1.1);
+    gltf.scene.translateX(-1);
+    gltf.scene.rotateY(THREE.MathUtils.degToRad(180))
+    scene.add( gltf.scene );
+}, undefined, function ( error ) {
+
+	console.error( error );
+
+} );
+
 renderer.render( scene, camera );
 
 
@@ -41,6 +57,7 @@ var animate = function(){
 function sleep() {
     return new Promise(resolve => setTimeout(resolve, 1000));
 }
+
 async function addCube()
 {
     const new_cube = new THREE.Mesh(geometry, material)
@@ -51,4 +68,3 @@ async function addCube()
     addCube()
 }
 animate();
-addCube();
