@@ -1,0 +1,19 @@
+{
+    "name" : "models",
+    "items" : [
+    {
+    "name" : "bookcase",
+    "path" : "moon.glb",
+    "position" : [0,10.5,0],
+    "rotation" : [0,0,0],
+    "scale" : 5
+    },
+    {
+        "name" : "room",
+        "path" : ".room2.glb",
+        "position" : [1,1,0],
+        "rotation" : [0,-90,0],
+        "scale" : 1
+    }
+]
+}   

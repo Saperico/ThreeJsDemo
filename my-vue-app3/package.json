@@ -14,7 +14,8 @@
     "save-dev": "^0.0.1-security",
     "three": "^0.138.3",
     "three-orbitcontrols": "^2.110.3",
-    "three.interaction": "^0.2.3"
+    "three.interaction": "^0.2.3",
+    "ts-vector": "^0.1.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.21",
