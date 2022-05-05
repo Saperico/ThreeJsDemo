@@ -3,10 +3,10 @@
     "items" : [
     {
     "name" : "bookcase",
-    "path" : "moon.glb",
-    "position" : [0,10.5,0],
+    "path" : "sp.glb",
+    "position" : [0,0,0],
     "rotation" : [0,0,0],
-    "scale" : 5
+    "scale" : 0.50
     },
     {
         "name" : "room",

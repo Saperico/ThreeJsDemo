@@ -6,10 +6,8 @@ let modelsArray: any[] = [];
 export class ModelLoader{
 
  loader = new GLTFLoader();
- scene : THREE.Scene;
- arr :any[] ;
- constructor(scene : THREE.Scene){
-   this.scene = scene;
+ arr :THREE.Group[] ;
+ constructor(){
    this.arr = []
    for(const model of modelsJson.items){
       this.loader.load( '/src/models/'+model.path, function ( gltf ) {
@@ -32,15 +30,14 @@ export class ModelLoader{
       curr_model.translateX(model.position[0])
       curr_model.translateY(model.position[1])
       curr_model.translateZ(model.position[2])
-      scene.add(curr_model)
       modelsArray.push(curr_model)
     }, undefined, function ( error ) {
     console.error( error );
      } );
-     this.getModels()
+     this.#getModels()
    }
  }
-  getModels():void{
+  #getModels():void{
     this.arr = modelsArray;
  }
 }
